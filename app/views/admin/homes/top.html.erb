@@ -1,0 +1,32 @@
+<header>
+  <% if admin_signed_in? %>
+    <li>
+      <%= link_to "商品一覧", '/admin/items' %>
+    </li>
+    <li>
+      <%= link_to "会員一覧", '/admin/customers' %>
+    </li>
+    <li>
+      <%= link_to "注文履歴一覧", '/admin' %>
+    </li>
+    <li>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to "About", '/about' %>
+    </li>
+    <li>
+      <%= link_to "商品一覧", '/admin/items' %>
+    </li>
+    <li>
+      <%= link_to "新規登録", '/admin/items/new' %>
+    </li>
+    <li>
+      <%= link_to "ログイン", new_admin_session_path %>
+    </li>
+  <% end %>
+</header>
+<body>
+  <%= "注文履歴一覧" %>
+</body>
