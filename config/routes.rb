@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-  get '/customers/:id' => 'public/customers#show', as: 'customer'
-  get '/customers/:id/edit' => 'public/customers#edit', as: 'edit'
+
+  scope module: :public do
+    resources :customers, only: [:show, :edit, :update]
+    get 'customers/:id/confirm_withdraw' => 'customers#confirm_withdraw', as: 'confirm_withdraw'
+    patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
