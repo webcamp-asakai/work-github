@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  scope module: :public do
+    get 'items' => 'items#index'
+    get 'items/:id' => 'items#show'
+  end
   namespace :admin do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
