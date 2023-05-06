@@ -3,7 +3,9 @@
 </div>
 <% @items.each do |item| %>
 <div>
-  <%= image_tag item.get_image(200,200) %>
+  <%= link_to item_path(item.id) do %>
+    <%= image_tag item.get_image(200,200) %>
+  <% end %>
   <%= item.name %>
   <%= item.price.to_s(:delimited) %>
 </div>
