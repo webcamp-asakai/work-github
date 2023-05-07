@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  namespace :admin do
+    resources :customers, only: [:index, :show, :edit, :update]
+  end
   scope module: :public do
     get 'items' => 'items#index'
     get 'items/:id' => 'items#show', as: 'item'
