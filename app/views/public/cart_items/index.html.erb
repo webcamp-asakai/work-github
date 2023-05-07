@@ -1,5 +1,6 @@
 <div>
   <h4>ショッピングカート</h4>
+  <%= link_to "カートを空にする", destroy_all_path, method: :delete, data: { confirm: "本当に空にしますか？" } %>
   <table>
     <thead>
       <tr>
