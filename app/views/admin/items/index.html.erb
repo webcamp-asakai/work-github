@@ -11,9 +11,9 @@
     <tbody>
       <% @items.each do |item| %>
       <tr>
-        <th><%= item.id %></th>
-        <th><%= link_to item.name, admin_item_path(item.id) %></th>
-        <th><%= item.price.to_s(:delimited) %></th>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item.id) %></td>
+        <td><%= item.price.to_s(:delimited) %></td>
       </tr>
       <% end %>
     </tbody>

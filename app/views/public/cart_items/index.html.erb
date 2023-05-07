@@ -13,13 +13,24 @@
     <tbody>
       <% @cart_items.each do |cart_items| %>
       <tr>
-        <td><%= image_tag cart_items.item.get_image(50,50) %></td>
+        <td><%= image_tag cart_items.item.get_image(100,100) %></td>
         <td><%= cart_items.item.name %></td>
-        <td><%= cart_items.item.price %></td>
+        <td><%= cart_items.item.price.to_s(:delimited) %></td>
         <td><%= cart_items.amount %></td>
-        <td><%= cart_items.subtotal %></td>
+        <td><%= cart_items.subtotal.to_s(:delimited) %></td>
+        <td><%= link_to "削除する", destroy_cart_item_path(cart_items.id), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+        <% (@total += cart_items.subtotal).to_s(:delimited) %>
       </tr>
       <% end %>
     </tbody>
   </table>
+  <div>
+    <%= link_to "買い物を続ける", items_path %>
+    <table>
+        <tr>
+          <td>合計金額</td>
+          <td><%= @total.to_s(:delimited) %></td>
+        </tr>
+    </table>
+  </div>
 </div>
