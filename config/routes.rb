@@ -5,8 +5,12 @@ Rails.application.routes.draw do
     get 'homes/about'
   end
   scope module: :public do
-    resources :cart_items, only: [:index, :new, :update, :destroy, :create]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
+  end
+
+  scope module: :public do
+    resources :items, only: [:index, :show]
   end
 
   devise_for :customers, skip: [:passwords], controllers: {

@@ -2,11 +2,12 @@
   <%= image_tag @item.get_image(400,400) %>
 </div>
 <div>
-  <%= form_with model: @item, url: cart_item_path, method: :post do |f| %>
-    <%= item.name %>
-    <%= item.introduction %>
-    <%= item.add_tax_price.to_s(:delimited) %><%= "(税込)" %>
-    <%= f.hidden_field :name, :value => "@item.id" %>
+    <%= @item.name %></br>
+    <%= @item.introduction %></br>
+    <%= @item.add_tax_price.to_s(:delimited) %><%= "(税込)" %></br>
+  <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
     <%= f.select :amount, *[1..3] %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.submit 'カートに追加' %>
   <% end %>
 </div>
