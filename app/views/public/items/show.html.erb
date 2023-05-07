@@ -1,21 +1,12 @@
 <div>
-  <h4>商品詳細</h4>
   <%= image_tag @item.get_image(400,400) %>
-  <table>
-    <tbody>
-      <tr>
-        <th>商品名</th>
-        <th><%= @item.name %></th>
-      </tr>
-      <tr>
-        <th>商品説明</th>
-        <th><%= @item.introduction %></th>
-      </tr>
-      <tr>
-        <th>税込価格</br>(税抜価格)</th>
-        <th><%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)</th>
-      </tr>
-    </tbody>
-  </table>
-  
+</div>
+<div>
+  <%= form_with model: @item, url: cart_item_path, method: :post do |f| %>
+    <%= item.name %>
+    <%= item.introduction %>
+    <%= item.add_tax_price.to_s(:delimited) %><%= "(税込)" %>
+    <%= f.hidden_field :name, :value => "@item.id" %>
+    <%= f.select :amount, *[1..3] %>
+  <% end %>
 </div>
