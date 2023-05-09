@@ -1,0 +1,10 @@
+<div>
+  <h4>注文情報入力</h4>
+  <% form_with model: @order, url: new_order_path, method: :post do |f| %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+    <%= f.label :payment_method_credit_card, "クレジットカード" %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+    <%= f.label :payment_method_transfer, "銀行振込" %>
+    <%= f.submit '確認画面へ進む' %>
+  <% end %>
+</div>
