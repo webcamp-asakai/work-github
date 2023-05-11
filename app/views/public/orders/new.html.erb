@@ -1,10 +1,20 @@
 <div>
   <h4>注文情報入力</h4>
-  <% form_with model: @order, url: new_order_path, method: :post do |f| %>
+  <%= form_with model: @order, url: confirm_information_path, method: :post do |f| %>
     <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-    <%= f.label :payment_method_credit_card, "クレジットカード" %>
+    <%= f.label :payment_method_credit_card, "クレジットカード" %></br>
     <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
     <%= f.label :payment_method_transfer, "銀行振込" %>
+    <p>お届け先</p>
+　　<%= f.radio_button :address_option, 0, checked: "checked" %><%= f.label :order_address, "ご自身の住所" %></br>
+　　  <%= current_customer.address_display %></br>
+　　<%= f.radio_button :address_option, 1 %><%= f.label :order_address, "新しい住所" %></br>
+          <%= f.label :delivery_postal_code, "郵便番号(ハイフンなし)" %>
+          <%= f.text_field :delivery_postal_code %></br>
+          <%= f.label :delivery_address, "住所" %>
+          <%= f.text_field :delivery_address %></br>
+          <%= f.label :delivery_name, "宛名" %>
+          <%= f.text_field :delivery_name %></br>
     <%= f.submit '確認画面へ進む' %>
   <% end %>
 </div>
