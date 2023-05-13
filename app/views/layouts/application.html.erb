@@ -11,6 +11,9 @@
   </head>
   <body>
 <header>
+  <div>
+    <%= image_tag 'naganocake.jpg' %>
+  </div>
   <% if admin_signed_in? %>
     <li>
       <%= link_to "商品一覧", '/admin/items' %>

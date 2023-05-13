@@ -19,6 +19,10 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
+  def update
+    cart_item.update_item(item_id: params[:item_id], amount: params[:amount])
+  end
+
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy

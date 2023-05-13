@@ -22,4 +22,8 @@ class CartItem < ApplicationRecord
   def add_item
     CartItem.find_by(item_id: item.id)
   end
+
+  def update_item(item_id:, amount:)
+    items.find_by(item_is: item_is).update(amount: amount.to_i)
+  end
 end
