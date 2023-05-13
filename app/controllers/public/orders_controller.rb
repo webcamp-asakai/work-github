@@ -40,7 +40,7 @@ class Public::OrdersController < ApplicationController
     end
 
     current_customer.cart_items.destroy_all
-    redirect_to '/orders/complete'
+    redirect_to complete_path
   end
 
   def complete
