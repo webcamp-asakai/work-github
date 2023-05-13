@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :orders, only: [:new, :show, :index]
-    post 'confirm_information' => 'orders#confirm_information'
-    get 'complete' => 'orders#complete'
-    get 'confirm_order' => 'orders#confirm_order'
+    post 'orders/confirm_information' => 'orders#confirm_information', as: 'confirm_information'
+    get 'orders/complete' => 'orders#complete', as: 'complete'
+    post 'orders/confirm_order' => 'orders#confirm_order', as: 'confirm_order'
   end
   scope module: :public do
     get '/' => 'homes#top'
