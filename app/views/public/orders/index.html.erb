@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @order.each do |order| %>
+      <% @orders.each do |order| %>
       <tr>
         <td><%= order.created_at %></td>
         <td>
@@ -18,8 +18,12 @@
           <%= order.delivery_address %></br>
           <%= order.delivery_name %>
         </td>
-        <td><%= order.item.name %></td>
-        <td><%= order.payment_including_tax.to_s(:delimited) %>円</td>
+        <td>
+          <% order.order_details.each do |order_detail| %>
+          <%= order_detail.item.name %>
+          <% end %>
+        </td>
+        <td><%= order.payment_amount.to_s(:delimited) %>円</td>
         <td><%= link_to "表示する", order_path(order.id) %></td>
       </tr>
       <% end %>

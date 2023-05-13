@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     get '/' => 'homes#top'
-    get 'homes/about'
+    get '/about' => 'homes#about'
   end
   scope module: :public do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
