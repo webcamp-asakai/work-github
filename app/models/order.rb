@@ -18,6 +18,6 @@ class Order < ApplicationRecord
   end
 
   def subtotal
-    cart_item.item.add_tax_price * amount
+    item.add_tax_price * amount
   end
 end

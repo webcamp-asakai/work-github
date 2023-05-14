@@ -14,7 +14,7 @@
       <tr>
         <td><%= image_tag cart_items.item.get_image(100,100) %></td>
         <td><%= cart_items.item.name %></td>
-        <td><%= cart_items.item.price.to_s(:delimited) %></td>
+        <td><%= cart_items.item.add_tax_price.to_s(:delimited) %></td>
         <td><%= cart_items.amount %></td>
         <td><%= cart_items.subtotal.to_s(:delimited) %></td>
         <% (@total += cart_items.subtotal).to_s(:delimited) %>

@@ -2,7 +2,7 @@
   <h4>注文情報入力</h4>
   <%= form_with model: @order, url: confirm_information_path, method: :post do |f| %>
     <p>支払方法</p>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: "checked" %>
     <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %></br>
     <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
     <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
