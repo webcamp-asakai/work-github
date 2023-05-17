@@ -18,8 +18,4 @@ class CartItem < ApplicationRecord
   def subtotal
     item.add_tax_price * amount
   end
-
-  def add_item
-    CartItem.find_by(item_id: item.id)
-  end
 end

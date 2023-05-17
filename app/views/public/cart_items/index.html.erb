@@ -24,8 +24,7 @@
           <td><%= cart_item.item.price.to_s(:delimited) %></td>
           <td>
             <%= form_with model: @cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
-              <%= f.select :amount, options_for_select(*[1..3], {selected: cart_item.amount.to_i}) %>
-
+              <%= f.select :amount, options_for_select(*[1..10], {selected: cart_item.amount.to_i}) %>
                 <%= f.submit '変更' %>
               <% end %>
           </td>
@@ -36,17 +35,19 @@
         <% end %>
       </tbody>
     </table>
-    <div class="dflex align_items_end">
-      <%= link_to "買い物を続ける", items_path, class:"btn btn-success" %>
-    </div>
-    <table class="table-bordered offset-lg-2">
-        <tr>
-          <td>合計金額</td>
-          <td><%= @total.to_s(:delimited) %></td>
-        </tr>
-    </table>
-    <div class="mx-auto">
-      <%= link_to "情報入力に進む", new_order_path, class:"btn btn-primary" %>
+  </div>
+  <div>
+      <div class="mr-auto">
+        <%= link_to "買い物を続ける", items_path, class:"btn btn-primary px-3" %>
+      </div>
+   　  <div class="d-flex flex-row">
+     　  <h4 class="border bg-light px-4 py-2">合計金額</h4>
+    　　  <h4 class="border px-4 py-2">¥<%= @total.to_s(:delimited) %></h4>
+      </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto m-5">
+      <%= link_to "情報入力に進む", new_order_path, class:"btn btn-success px-3" %>
     </div>
   </div>
 </div>

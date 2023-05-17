@@ -1,6 +1,6 @@
 <%= "注文情報確認" %>
-  <table>
-    <thead>
+  <table class="table-bordered">
+    <thead class="thead-light">
       <tr>
         <th colspan="2">商品名</th>
         <th>単価(税込)</th>
@@ -22,7 +22,7 @@
       <% end %>
     </tbody>
   </table>
-  <table>
+  <table class="">
     <tr>
       <td>送料</td>
       <td><%= @order.postage %></td>

@@ -13,7 +13,7 @@
             <p>(税込)</p>
           </div>
           <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
+          <%= f.select :amount, *[1..10] %>
           <%= f.submit 'カートに入れる', class:"btn btn-success mx-5" %>
         <% end %>
       </div>
