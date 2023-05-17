@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   scope module: :public do
     get 'orders/complete' => 'orders#complete', as: 'complete'
     post 'orders/confirm_information' => 'orders#confirm_information', as: 'confirm_information'
@@ -45,6 +46,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
+  end
+
+  namespace :admin do
+    get 'orders/show' => 'orders#show', as: 'order'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
