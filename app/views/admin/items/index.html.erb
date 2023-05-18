@@ -1,23 +1,31 @@
-<div>
-  <h4>商品一覧</h4>
-  <%= link_to "+", new_admin_item_path, class:"btn btn-outline-dark p-3" %>
-  <table>
-    <thead>
-      <tr>
-        <th>商品ID</th>
-        <th>商品名</th>
-        <th>税抜価格</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item.id) %></td>
-        <td>¥<%= item.price.to_s(:delimited) %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <div class="d-flex align-items-end m-5">
+        <h4 class="m-3">商品一覧</h4>
+        <%= link_to "＋", new_admin_item_path, class:"btn btn-outline-dark px-3" %>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to item.name, admin_item_path(item.id) %></td>
+            <td>¥<%= item.price.to_s(:delimited) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pagination justify-content-center">
+    <%= paginate @items %>
+  </div>
 </div>
-<%= paginate @items %>
