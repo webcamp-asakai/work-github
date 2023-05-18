@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+      <div class="col-lg-3">
+        <%= image_tag @item.get_image(400,400) %>
+      </div>
+      <div class="col-lg-7 offset-lg-2">
+        <%= form_with model: @cart_item, url: '/cart_items', method: :post do |f| %>
+          <h1 class="m-3"><%= @item.name %></h1>
+          <h2 class="m-3"><%= @item.introduction %></h2>
+          <div class="d-flex align_items_end m-3">
+            <h3>¥</h3>
+            <h3 class="font-weight-bold"><%= @item.add_tax_price.to_s(:delimited) %></h3>
+            <p>(税込)</p>
+          </div>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.select :amount, *[1..10] %>
+          <%= f.submit 'カートに入れる', class:"btn btn-success mx-5" %>
+        <% end %>
+      </div>
+  </div>
+</div>
